@@ -38,7 +38,14 @@ movieApp.getMovieInfo = () => {
         .then((jsonResponse) => {
             console.log(jsonResponse)
             movieApp.displayMovieInfo(jsonResponse)
+            movieApp.getLanguage(jsonResponse)
         })
+}
+
+movieApp.getLanguage = (dataLanguage) => {
+    let currentLanguage = dataLanguage.filter((item) => {
+        return movieApp.userLanguage === dataLanguage.original_language
+    })
 }
 
 movieApp.expandingBar = () => {
