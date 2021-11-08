@@ -400,15 +400,15 @@ input {
           justify-content: center;
 }
 
-footer {
-  background-color: #ffe02e;
-  height: 10vh;
-}
-
-footer p {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  font-size: 2rem;
-  padding-top: 5rem;
+footer{
+    background-color: blue;
+    height: 10vh;
+    background-color: #ffe02e;
+    p {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 5rem;
+    }
 }

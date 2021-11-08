@@ -143,14 +143,14 @@ input {
 //end of css addition
 
 footer{
+    background-color: blue;
+    height: 10vh;
     background-color: #ffe02e;
-    height: 5vh;
-}
-
-footer p {
+    p {
     display: flex;
     justify-content: center;
     text-align: center;
     font-size: 2rem;
     padding-top: 5rem;
+    }
 }
