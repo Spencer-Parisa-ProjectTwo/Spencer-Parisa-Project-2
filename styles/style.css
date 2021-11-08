@@ -404,3 +404,10 @@ footer {
   background-color: white;
   height: 10vh;
 }
+footer p {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 5rem;
+}
