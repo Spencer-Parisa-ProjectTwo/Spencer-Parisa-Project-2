@@ -26,8 +26,7 @@ figure {
 }
 
 hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   height: 0;
   overflow: visible;
 }
@@ -140,8 +139,7 @@ fieldset {
 }
 
 legend {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: inherit;
   display: table;
   max-width: 100%;
@@ -159,8 +157,7 @@ textarea {
 }
 
 [type=checkbox], [type=radio] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0;
 }
 
@@ -203,13 +200,11 @@ template {
 }
 
 html {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 *, *:before, *:after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 .sr-only {
@@ -251,26 +246,15 @@ html {
 
 header {
   background-color: #2C2C2C;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 50vh;
+  flex-direction: column;
+  height: 60vh;
 }
 header .imgContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
 }
 header .imgContainer div {
   background-size: cover;
@@ -289,8 +273,7 @@ header .imgContainer .imageThree {
   background-image: url(../assets/imageThree.jpeg);
 }
 header h1 {
-  -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
   color: white;
   font-size: 5.4rem;
   margin-top: 10px;
@@ -299,12 +282,8 @@ header h1 {
 
 .searchContainer {
   background-color: black;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   height: 40vh;
 }
 
@@ -312,19 +291,14 @@ ul {
   background-color: #2C2C2C;
 }
 ul li {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   color: white;
 }
 ul p {
   font-family: "Lato", sans-serif;
   font-size: 1.8rem;
-  -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
   line-height: 1.3;
 }
 ul img {
@@ -338,12 +312,10 @@ input {
   height: 20px;
   padding: 20px;
   border-radius: 30px;
-  -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
   border: none;
   color: white;
   cursor: pointer;
-  -webkit-transition: width 1s ease;
   transition: width 1s ease;
   font-size: 1.6em;
 }
@@ -354,32 +326,22 @@ input {
   position: absolute;
   z-index: 10;
   cursor: pointer;
-  -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
 }
 
 .search {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .dropDown {
-  -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
   margin: 20px 0 20px 0;
 }
 
 .submit {
-  -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
   width: 60%;
   text-align: center;
   border: none;
@@ -392,23 +354,19 @@ input {
 
 .positioning {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
-footer{
-    background-color: blue;
-    height: 10vh;
-    background-color: #ffe02e;
-    p {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    font-size: 2rem;
-    padding-top: 5rem;
-    }
+footer {
+  background-color: #ffe02e;
+  height: 5vh;
 }
+
+footer p {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 5rem;
+}/*# sourceMappingURL=style.css.map */

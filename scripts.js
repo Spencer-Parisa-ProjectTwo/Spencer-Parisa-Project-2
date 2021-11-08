@@ -29,6 +29,7 @@ movieApp.getMovieInfo = () => {
     url.search = new URLSearchParams({
         api_key: movieApp.apiKey,
         query: movieApp.userSearchTerm,
+        page: 1,
         //language: movieApp.userLanguage
     })
     fetch(url)
@@ -38,7 +39,15 @@ movieApp.getMovieInfo = () => {
         .then((jsonResponse) => {
             console.log(jsonResponse)
             movieApp.displayMovieInfo(jsonResponse)
+            //movieApp.getLanguage(jsonResponse)
+            //movieApp.fiveRandomOptions(jsonResponse)
         })
+}
+
+movieApp.getLanguage = (dataLanguage) => {
+    let currentLanguage = dataLanguage.filter((item) => {
+        return movieApp.userLanguage === dataLanguage.original_language
+    })
 }
 
 movieApp.expandingBar = () => {
@@ -95,6 +104,10 @@ movieApp.displayMovieInfo = (dataMovie) => {
     })
 }  
 
+movieApp.emptyResults = () => {
+    const resultsEl = document.querySelector('.results')
+    resultsEl.innerHTML = ""
+}
 
 movieApp.init = () => {
     movieApp.expandingBar()
@@ -104,7 +117,29 @@ movieApp.init = () => {
 movieApp.init()
 
 
-
 // const resultsEl = document.querySelector('.results')
 // resultsEl.innerHTML = ""
 //movieApp.userSearchTerm.textContent = ''
+
+// if(movieApp.userSearchTerm !== ""){
+//     movieApp.getMovieInfo()
+// }else{
+//     alert("enter a title!")
+// }
+
+
+//only publishing 5 of the results 
+// movieApp.fiveRandomOptions = (allData) => {
+//    const movieIndexOne = Math.floor(math.random() * allData.length)
+//    const movieIndexTwo = Math.floor(math.random() * allData.length)
+//    const movieIndexThree = Math.floor(math.random() * allData.length)
+//    const movieIndexFour = Math.floor(math.random() * allData.length)
+//    //movieApp.displayMovieInfo(movieIndexOne, movieIndexTwo, movieIndexThree, movieIndexFour)
+//    //return allData[movieIndexOne, movieIndexTwo, movieIndexThree, movieIndexFour]
+//    const randomChoices = []
+//    return randomChoices[movieIndexOne, movieIndexTwo, movieIndexThree, movieIndexFour]
+// }
+
+// const choices = []
+// choices = movieApp.fiveRandomOptions()
+// console.log(choices)
