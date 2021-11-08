@@ -29,6 +29,7 @@ movieApp.getMovieInfo = () => {
     url.search = new URLSearchParams({
         api_key: movieApp.apiKey,
         query: movieApp.userSearchTerm,
+        page: 1,
         //language: movieApp.userLanguage
     })
     fetch(url)
@@ -62,8 +63,6 @@ movieApp.expandingBar = () => {
 }
 
 movieApp.displayMovieInfo = (dataMovie) => {
-
-    
 
     const ulElement = document.querySelector('ul')
     const formElement = document.querySelector('form')
