@@ -144,4 +144,12 @@ input {
 footer{
     background-color: white;
     height: 10vh;
+    background-color: #ffe02e;
+    p {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 5rem;
+    }
 }
