@@ -21,14 +21,12 @@ const movieApp = {}
 movieApp.apiKey = `bfb23e9c017a2be83f91472023334cb6`
 movieApp.apiUrl = 'https://api.themoviedb.org/3/search/movie'
 
-movieApp.userSearchTerm = document.querySelector('input[name=search]').value;
-movieApp.userLanguage = document.querySelector('select[name=language]').value;
 
-movieApp.getMovieInfo = () => {
+movieApp.getMovieInfo = (argument) => {
     const url = new URL(movieApp.apiUrl)
     url.search = new URLSearchParams({
         api_key: movieApp.apiKey,
-        query: movieApp.userSearchTerm,
+        query: argument,
         page: 1,
         //language: movieApp.userLanguage
     })
@@ -37,7 +35,6 @@ movieApp.getMovieInfo = () => {
             return response.json()
         })
         .then((jsonResponse) => {
-            console.log(jsonResponse)
             movieApp.displayMovieInfo(jsonResponse)
             //movieApp.getLanguage(jsonResponse)
             //movieApp.fiveRandomOptions(jsonResponse)
@@ -63,45 +60,29 @@ movieApp.expandingBar = () => {
 }
 
 movieApp.displayMovieInfo = (dataMovie) => {
+    
+    const firstFive = dataMovie.results.slice(0, 4)
+    console.log(firstFive)
 
     const ulElement = document.querySelector('ul')
-    const formElement = document.querySelector('form')
-    // const summary = document.querySelector('.overview')
-
-    formElement.addEventListener('submit', function(e){
-        e.preventDefault();
-        dataMovie.results.forEach((item) => {
-            const li = document.createElement('li')
-            const img = document.createElement('img')
-            const infoElement = document.createElement('p')
-            // const titleElement = document.createElement('p')
-            // const popularityElement = document.createElement('p')
-            const imgDefault = 'https://image.tmdb.org/t/p/w500'
-
-            img.src = imgDefault.concat(item.poster_path)
-            img.alt = item.title
-
-            li.append(img)
-            ulElement.appendChild(li)
-
-            infoElement.innerHTML = `<div>${item.original_title}</div><p>${item.overview}</p><div>${item.popularity}</div>`
-            li.append(infoElement)
-
-            // infoElement.textContent = item.overview
-            // li.append(infoElement)
-
-            // titleElement.textContent = item.original_title
-            // li.append(titleElement)
-
-            // popularityElement.textContent = item.popularity
-            // li.append(popularityElement)
-
-            //adding
-            //formElement.style.display = 'none'
-
-
+    firstFive.forEach((item) => {
+            if(item.poster_path && item.overview){
+                const li = document.createElement('li')
+                const img = document.createElement('img')
+                const infoElement = document.createElement('p')
+                const imgDefault = 'https://image.tmdb.org/t/p/w500'
+    
+                img.src = imgDefault.concat(item.poster_path)
+                img.alt = item.title
+    
+                li.append(img)
+                ulElement.appendChild(li)
+    
+                infoElement.innerHTML = `<div>${item.original_title}</div><p>${item.overview}</p><div>${item.popularity}</div>`
+                li.append(infoElement)
+            }
+    
         });
-    })
 }  
 
 movieApp.emptyResults = () => {
@@ -111,7 +92,18 @@ movieApp.emptyResults = () => {
 
 movieApp.init = () => {
     movieApp.expandingBar()
-    movieApp.getMovieInfo()
+    // const ulElement = document.querySelector('ul')
+    const formElement = document.querySelector('form')
+    formElement.addEventListener('submit', function(e){
+        e.preventDefault();
+        const headerElement = document.querySelector('header')
+        const iconElement = document.querySelector('i')
+        headerElement.style.display = 'none' 
+        iconElement.style.display = 'block'
+        movieApp.userSearchTerm = document.querySelector('input[name=search]').value;
+        //movieApp.userLanguage = document.querySelector('select[name=language]').value;
+        movieApp.getMovieInfo(movieApp.userSearchTerm)
+    })
 }
 
 movieApp.init()
@@ -127,18 +119,6 @@ movieApp.init()
 //     alert("enter a title!")
 // }
 
-
-//only publishing 5 of the results 
-// movieApp.fiveRandomOptions = (allData) => {
-//    const movieIndexOne = Math.floor(math.random() * allData.length)
-//    const movieIndexTwo = Math.floor(math.random() * allData.length)
-//    const movieIndexThree = Math.floor(math.random() * allData.length)
-//    const movieIndexFour = Math.floor(math.random() * allData.length)
-//    //movieApp.displayMovieInfo(movieIndexOne, movieIndexTwo, movieIndexThree, movieIndexFour)
-//    //return allData[movieIndexOne, movieIndexTwo, movieIndexThree, movieIndexFour]
-//    const randomChoices = []
-//    return randomChoices[movieIndexOne, movieIndexTwo, movieIndexThree, movieIndexFour]
-// }
 
 // const choices = []
 // choices = movieApp.fiveRandomOptions()
