@@ -410,6 +410,7 @@ ul img {
   transition: all ease 0.5s;
 }
 .controls .control {
+  display: none;
   margin: 0 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -446,6 +447,7 @@ footer p {
   text-align: center;
   font-size: 2rem;
   padding-top: 5px;
+  font-family: "Lato", sans-serif;
 }
 
 @media (max-width: 480px) {

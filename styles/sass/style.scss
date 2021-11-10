@@ -126,6 +126,7 @@ header{
 
 ul {
     background-color: $blackColor;
+    //display: none; //carousel
     // display: flex; added
     // width: 100%; //added
     li{
@@ -155,6 +156,7 @@ ul {
     z-index: 99999;
     transition: all ease 0.5s;
     .control{
+        display: none;
         margin: 0 5px;
         display: flex;
         align-items: center;
@@ -181,8 +183,9 @@ footer{
         text-align: center;
         font-size: 2rem;
         padding-top: 5px;
+        font-family: 'Lato', sans-serif;
     }
 }
 
-
+@import 'carousel';
 @import 'mobile';
