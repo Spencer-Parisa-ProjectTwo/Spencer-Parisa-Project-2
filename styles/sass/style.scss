@@ -20,7 +20,7 @@ img{
 html{
     font-size: 62.5%;
 }
-//added wrapper
+
 .wrapper{
     width: 80%;
     margin: 0 auto;
@@ -30,7 +30,7 @@ header{
     background-color: #2C2C2C;
     display: flex;
     flex-direction: column;
-    height: 50vh;
+    height: 60vh;
     .imgContainer{
         display: flex;
         flex-wrap: wrap;
@@ -40,9 +40,10 @@ header{
             background-size: cover;
             background-position: center;
             width: calc((100% / 3) - 40px);
-            height: 40vh;
+            height: 35vh;
             margin-right: 20px;
         }
+        
         .imageOne{
             background-image: url(../assets/imageOne.jpeg);
         }
@@ -57,7 +58,7 @@ header{
         align-self: center;
         color: white;
         font-size: 5.4rem;
-        margin-top: 10px;
+        margin-top: 40px;
         font-family: 'Mr Dafoe', cursive;
     }
 }
@@ -66,13 +67,71 @@ header{
     display: flex;
     justify-content: center;
     height: 40vh;
+    input {
+        background: rgb(19, 113, 145);
+        width: 20px;
+        height: 20px;
+        padding: 20px;
+        border-radius: 30px;
+        align-self: center;
+        border: none;
+        color: white;
+        cursor: pointer;
+        transition: width 1s ease;
+        font-size: 1.6em;
+    }
+    .searchBtn{
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        //top: 505px;
+        z-index: 10;
+        cursor: pointer;
+        align-self: center;
+    }
+    
+    .search{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        i{
+            display: none;
+            font-size: 40px;
+            color: white;
+        }
+    }
+    
+    .dropDown{
+        align-self: center;
+        margin: 20px 0 20px 0;
+    }
+    
+    .submit{
+        align-self: center;
+        width: 60%;
+        text-align: center;
+        border: none;
+        border-radius: 10px;
+        font-size: 20px;
+        line-height: 32px;
+        letter-spacing: 1px;
+        cursor: pointer;
+    }
+    
+    .positioning{
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    
+    //end of css addition
 }
 
 ul {
     background-color: $blackColor;
     li{
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         color: white;
     }
     p{
@@ -86,70 +145,15 @@ ul {
     width: 300px;
     }
 }
-//addition start
-input {
-    background: rgb(19, 113, 145);
-    width: 20px;
-    height: 20px;
-    padding: 20px;
-    border-radius: 30px;
-    align-self: center;
-    border: none;
-    color: white;
-    cursor: pointer;
-    transition: width 1s ease;
-    font-size: 1.6em;
-}
-.searchBtn{
-    width: 22px;
-    height: 22px;
-    position: absolute;
-    //top: 505px;
-    z-index: 10;
-    cursor: pointer;
-    align-self: center;
-}
-
-.search{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.dropDown{
-    align-self: center;
-    margin: 20px 0 20px 0;
-}
-
-.submit{
-    align-self: center;
-    width: 60%;
-    text-align: center;
-    border: none;
-    border-radius: 10px;
-    font-size: 20px;
-    line-height: 32px;
-    letter-spacing: 1px;
-    cursor: pointer;
-}
-
-.positioning{
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-//end of css addition
 
 footer{
-    background-color: white;
-    height: 10vh;
+    height: 5vh;
     background-color: #ffe02e;
     p {
     display: flex;
     justify-content: center;
     text-align: center;
     font-size: 2rem;
-    padding-top: 5rem;
+    padding-top: 5px;
     }
 }

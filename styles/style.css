@@ -258,7 +258,7 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 50vh;
+  height: 60vh;
 }
 header .imgContainer {
   display: -webkit-box;
@@ -276,7 +276,7 @@ header .imgContainer div {
   background-size: cover;
   background-position: center;
   width: calc((100% / 3) - 40px);
-  height: 40vh;
+  height: 35vh;
   margin-right: 20px;
 }
 header .imgContainer .imageOne {
@@ -293,7 +293,7 @@ header h1 {
       align-self: center;
   color: white;
   font-size: 5.4rem;
-  margin-top: 10px;
+  margin-top: 40px;
   font-family: "Mr Dafoe", cursive;
 }
 
@@ -307,32 +307,7 @@ header h1 {
           justify-content: center;
   height: 40vh;
 }
-
-ul {
-  background-color: #2C2C2C;
-}
-ul li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  color: white;
-}
-ul p {
-  font-family: "Lato", sans-serif;
-  font-size: 1.8rem;
-  -ms-flex-item-align: center;
-      align-self: center;
-  line-height: 1.3;
-}
-ul img {
-  height: 400px;
-  width: 300px;
-}
-
-input {
+.searchContainer input {
   background: #137191;
   width: 20px;
   height: 20px;
@@ -347,8 +322,7 @@ input {
   transition: width 1s ease;
   font-size: 1.6em;
 }
-
-.searchBtn {
+.searchContainer .searchBtn {
   width: 22px;
   height: 22px;
   position: absolute;
@@ -357,8 +331,7 @@ input {
   -ms-flex-item-align: center;
       align-self: center;
 }
-
-.search {
+.searchContainer .search {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -370,14 +343,17 @@ input {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
-.dropDown {
+.searchContainer .search i {
+  display: none;
+  font-size: 40px;
+  color: white;
+}
+.searchContainer .dropDown {
   -ms-flex-item-align: center;
       align-self: center;
   margin: 20px 0 20px 0;
 }
-
-.submit {
+.searchContainer .submit {
   -ms-flex-item-align: center;
       align-self: center;
   width: 60%;
@@ -389,8 +365,7 @@ input {
   letter-spacing: 1px;
   cursor: pointer;
 }
-
-.positioning {
+.searchContainer .positioning {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -400,9 +375,31 @@ input {
           justify-content: center;
 }
 
+ul {
+  background-color: #2C2C2C;
+}
+ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  color: white;
+}
+ul p {
+  font-family: "Lato", sans-serif;
+  font-size: 1.8rem;
+  -ms-flex-item-align: center;
+      align-self: center;
+  line-height: 1.3;
+}
+ul img {
+  height: 400px;
+  width: 300px;
+}
+
 footer {
-  background-color: white;
-  height: 10vh;
+  height: 5vh;
   background-color: #ffe02e;
 }
 footer p {
@@ -414,5 +411,5 @@ footer p {
           justify-content: center;
   text-align: center;
   font-size: 2rem;
-  padding-top: 5rem;
+  padding-top: 5px;
 }
