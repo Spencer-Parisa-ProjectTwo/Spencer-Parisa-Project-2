@@ -20,7 +20,7 @@ movieApp.getMovieInfo = (argument, argumentTwo) => {
                 throw new Error(res.statusText)
             }
         })
-        .then((jsonResponse) => {
+        .then(jsonResponse) => {
             movieApp.displayMovieInfo(jsonResponse)
         })
         .catch((error) => {
@@ -29,7 +29,6 @@ movieApp.getMovieInfo = (argument, argumentTwo) => {
             }
         })
 }
-
 movieApp.expandingBar = () => {
     const searchBtn = document.querySelector('.searchBtn')
     const inputEl = document.querySelector('.searchInput')
@@ -87,15 +86,7 @@ movieApp.setUpEventListner = () => {
             movieApp.iconElement.style.display = 'block'
             movieApp.carousel()
         } else {
-            popUpElement.innerHTML = '<p>At least put something!!!</p><button class="goBack">Return</button>'
-            popUpElement.addEventListener('click', function(event){
-                if(event.target.tagName === 'BUTTON'){
-                    event.preventDefault();
-                    document.getElementById('popUp').style.display='none'
-                    document.getElementById('popUp').innerHTML = ''
-                }
-            })
-
+            popUpElement.innerHTML = 'At least type something!'
         }
     })
 }
