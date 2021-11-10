@@ -16,11 +16,10 @@ movieApp.getMovieInfo = (argument, argumentTwo) => {
         .then((response) => {
             return response.json()
         })
-        .then((jsonResponse) => {
+        .then(jsonResponse) => {
             movieApp.displayMovieInfo(jsonResponse)
         })
 }
-
 movieApp.expandingBar = () => {
     const searchBtn = document.querySelector('.searchBtn')
     const inputEl = document.querySelector('.searchInput')
@@ -65,6 +64,8 @@ movieApp.displayMovieInfo = (dataMovie) => {
 movieApp.setUpEventListner = () => {
 
     const formElement = document.querySelector('form')
+    const popUpElement = document.querySelector('.popUpError')
+
     formElement.addEventListener('submit', function (e) {
         e.preventDefault();
         const headerElement = document.querySelector('header')
@@ -76,7 +77,7 @@ movieApp.setUpEventListner = () => {
             movieApp.iconElement.style.display = 'block'
             //movieApp.carousel()
         } else {
-            alert('Please enter a movie name; at least!')
+            popUpElement.innerHTML = 'At least type something!'
         }
     })
 }
