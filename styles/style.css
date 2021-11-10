@@ -399,6 +399,37 @@ ul img {
   width: 300px;
 }
 
+.controls {
+  display: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  z-index: 99999;
+  -webkit-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+}
+.controls .control {
+  margin: 0 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  opacity: 0.5;
+  -webkit-transition: ease 0.3s;
+  transition: ease 0.3s;
+  cursor: pointer;
+}
+
 footer {
   background-color: blue;
   height: 10vh;
@@ -415,4 +446,34 @@ footer p {
   text-align: center;
   font-size: 2rem;
   padding-top: 5px;
+}
+
+@media (max-width: 480px) {
+  .imageOne,
+.imageThree {
+    display: none;
+  }
+
+  header .imgContainer div {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  ul li {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  li img {
+    -ms-flex-item-align: center;
+        align-self: center;
+    margin: 50px 0 50px 0;
+  }
+
+  ul div,
+ul p {
+    margin: 0 20px 0 20px;
+  }
 }

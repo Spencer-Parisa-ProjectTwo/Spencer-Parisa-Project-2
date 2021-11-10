@@ -126,10 +126,14 @@ header{
 
 ul {
     background-color: $blackColor;
+    // display: flex; added
+    // width: 100%; //added
     li{
         display: flex;
         justify-content: space-between;
         color: white;
+        // transition: 1s ease-in-out all; //added
+        // width: 100%; //added
     }
     p{
         font-family: 'Lato', sans-serif;
@@ -140,8 +144,31 @@ ul {
     img{
     height: 400px;
     width: 300px;
+    // min-width: 100%; //added
     }
 }
+
+.controls{
+    display: none;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 99999;
+    transition: all ease 0.5s;
+    .control{
+        margin: 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.7);
+        opacity: 0.5;
+        transition: ease 0.3s;
+        cursor: pointer;
+    }
+}
+
 
 footer{
     background-color: blue;
@@ -158,4 +185,4 @@ footer{
 }
 
 
-
+@import 'mobile';
