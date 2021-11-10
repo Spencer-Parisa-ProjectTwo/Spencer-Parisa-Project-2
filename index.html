@@ -35,15 +35,17 @@
                     
                     <label for="language" class="sr-only">Language</label>
                     <select name="language">
-                        <option value="English">English</option>
-                        <option value="French">French </option>
-                        <option value="German">German</option>
-                        <option value="Spanish">Spanish</option>
+                        <!-- added -->
+                        <option value disabled selected>Choose Language</option> 
+                        <option value="English">en</option>
+                        <option value="French">fr</option>
+                        <option value="German">de</option>
+                        <option value="Spanish">es</option>
                     </select>
                     
                     <label for="year" class="sr-only">Year</label>
                     <select id="year" name="year">
-                        <option value disabled selected>Choose year</option>
+                        <option value disabled selected>Choose Year</option>
                         <option value="thirties">30's</option>
                         <option value="fourties">40's</option>
                         <option value="fifties">50's</option>
@@ -63,20 +65,24 @@
         <section class="results">
             <div class="posterPlaceholder">
                 <ul>
-                    <div class="infoPlaceholder">
+                    <!-- <div class="infoPlaceholder">
                         <div class="overview"></div>
                         <div class="year"></div>
                         <div class="rating"></div>
-                    </div>
+                    </div> -->
                 </ul>
             </div>
+            <div class="controls">
+                <div class="control prev-slide">&#9668;</div>
+                <div class="control next-slide">&#9658;</div>
+              </div>
         </section>
     </main>
 
     <footer>
-        <p>Created &#64; Juno College by Parisa & Spencer</p>
+        <p>Created at Juno College by Parisa & Spencer</p>
     </footer>
 
-    <script src="./scripts.js"></script>
+    <script src="./scriptsB.js"></script>
 </body>
 </html>

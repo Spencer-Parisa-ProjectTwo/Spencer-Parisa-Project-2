@@ -28,6 +28,7 @@ movieApp.getMovieInfo = (argument) => {
         api_key: movieApp.apiKey,
         query: argument,
         page: 1,
+        //language: 'fr'
         //language: movieApp.userLanguage
     })
     fetch(url)
@@ -36,6 +37,7 @@ movieApp.getMovieInfo = (argument) => {
         })
         .then((jsonResponse) => {
             movieApp.displayMovieInfo(jsonResponse)
+            console.log(jsonResponse)
             //movieApp.getLanguage(jsonResponse)
             //movieApp.fiveRandomOptions(jsonResponse)
         })
@@ -60,29 +62,29 @@ movieApp.expandingBar = () => {
 }
 
 movieApp.displayMovieInfo = (dataMovie) => {
-    
+    //movieApp.carousel()
     const firstFive = dataMovie.results.slice(0, 4)
-    console.log(firstFive)
 
-    const ulElement = document.querySelector('ul')
     firstFive.forEach((item) => {
-            if(item.poster_path && item.overview){
-                const li = document.createElement('li')
-                const img = document.createElement('img')
-                const infoElement = document.createElement('p')
-                const imgDefault = 'https://image.tmdb.org/t/p/w500'
+        
+        if(item.poster_path && item.overview){
+            const ulElement = document.querySelector('ul')
+            const li = document.createElement('li')
+            const img = document.createElement('img')
+            const infoElement = document.createElement('p')
+            const imgDefault = 'https://image.tmdb.org/t/p/w500'
     
-                img.src = imgDefault.concat(item.poster_path)
-                img.alt = item.title
+            img.src = imgDefault.concat(item.poster_path)
+            img.alt = item.title
     
-                li.append(img)
-                ulElement.appendChild(li)
+            li.append(img)
+            ulElement.appendChild(li)
     
-                infoElement.innerHTML = `<div>${item.original_title}</div><p>${item.overview}</p><div>${item.popularity}</div>`
-                li.append(infoElement)
-            }
-    
-        });
+            infoElement.innerHTML = `<div>${item.original_title}</div><p>${item.overview}</p><div>${item.popularity}</div>`
+            li.append(infoElement)
+            
+        }
+    });
 }  
 
 movieApp.emptyResults = () => {
@@ -91,6 +93,7 @@ movieApp.emptyResults = () => {
 }
 
 movieApp.init = () => {
+
     movieApp.expandingBar()
     // const ulElement = document.querySelector('ul')
     const formElement = document.querySelector('form')
@@ -106,12 +109,14 @@ movieApp.init = () => {
     })
 }
 
+// if(movieApp.userSearchTerm !== ""){
+//     // movieApp.getMovieInfo()
+//     movieApp.init()
+// }else{
+//     alert("enter a title!")
+// }
 movieApp.init()
 
-
-// const resultsEl = document.querySelector('.results')
-// resultsEl.innerHTML = ""
-//movieApp.userSearchTerm.textContent = ''
 
 // if(movieApp.userSearchTerm !== ""){
 //     movieApp.getMovieInfo()
@@ -120,6 +125,46 @@ movieApp.init()
 // }
 
 
-// const choices = []
-// choices = movieApp.fiveRandomOptions()
-// console.log(choices)
+// movieApp.carousel = () => {
+    
+//     const controls = document.querySelector('.controls')
+//     controls.style.display = 'flex'
+    
+//     const delay = 3000;
+
+//     const slides = document.querySelector('ul');
+//     const slidesCount = slides.childElementCount;
+//     const maxLeft = (slidesCount - 1) * 100 * -1;
+    
+//     let current = 0;
+    
+//     function changeSlide(next = true) {
+//       if (next) {
+//         current += current > maxLeft ? -100 : current * -1;
+//       } else {
+//         current = current < 0 ? current + 100 : maxLeft;
+//       }
+    
+//       slides.style.left = current + "%";
+//     }
+    
+//     // let autoChange = setInterval(changeSlide, delay);
+//     // const restart = function() {
+//     // clearInterval(autoChange);
+//     // autoChange = setInterval(changeSlide, delay);
+//     // };
+
+//     document.querySelector(".next-slide").addEventListener("click", function() {
+//       changeSlide();
+//       //restart();
+//     });
+    
+//     document.querySelector(".prev-slide").addEventListener("click", function() {
+//       changeSlide(false);
+//       //restart();
+//     });
+// }
+
+// document.querySelector('select[name=language]').addEventListener("change", (e) => {
+        
+// })
