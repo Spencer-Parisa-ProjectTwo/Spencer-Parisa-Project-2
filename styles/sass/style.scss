@@ -2,7 +2,7 @@
 @import 'normalized';
 
 $blackColor: #2C2C2C;
-$yellowColor: #FDFA69;
+$yellowColor: #ffe02e;
 
 body,
 ul,
@@ -20,6 +20,8 @@ img{
 
 html{
     font-size: 62.5%;
+    font-family: 'Lato', sans-serif;
+
 }
 //added wrapper
 .wrapper{
@@ -67,6 +69,22 @@ header{
     display: flex;
     justify-content: center;
     height: 35vh;
+    .popUpError{
+        font-size: 30px;
+        color: white;
+        align-self: center;
+        position: absolute;
+        background-color: $blackColor;
+        display: flex;
+        flex-direction: column;
+        z-index: 20;
+        button{
+            margin: 20px;
+        }
+        p{
+            margin: 20px;
+        }
+    }
     input {
         background: rgb(19, 113, 145);
         width: 20px;
@@ -80,16 +98,29 @@ header{
         transition: width 1s ease;
         font-size: 1.6em;
     }
+
+    select[name=language],
+    select[name=year] {
+        border: none;
+        font-family: 'Lato', sans-serif;
+        border-radius: 2px;
+        font-size: 15px;
+        line-height: 32px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        padding: 5px;
+    }
+    select[name=year]{
+        margin-left: 10px;
+    }
     .searchBtn{
         width: 22px;
         height: 22px;
         position: absolute;
-        //top: 505px;
         z-index: 10;
         cursor: pointer;
         align-self: center;
-    }
-    
+    }   
     .search{
         display: flex;
         flex-direction: column;
@@ -99,8 +130,7 @@ header{
             color: white;
             display: none;
         }
-    }
-    
+    }   
     .dropDown{
         align-self: center;
         margin: 20px 0 20px 0;
@@ -126,26 +156,26 @@ header{
 
 ul {
     background-color: $blackColor;
-    //display: none; //carousel
-    // display: flex; added
-    // width: 100%; //added
     li{
         display: flex;
         justify-content: space-between;
         color: white;
-        // transition: 1s ease-in-out all; //added
-        // width: 100%; //added
+        padding-top: 40px;
+        margin-left: 40px;
     }
     p{
         font-family: 'Lato', sans-serif;
         font-size: 1.8rem;
         align-self: center;
         line-height: 1.3; 
+        width: 70%;
     }
     img{
     height: 400px;
     width: 300px;
-    // min-width: 100%; //added
+    }
+    h2{
+        padding-bottom: 20px;
     }
 }
 
@@ -173,9 +203,8 @@ ul {
 
 
 footer{
-    background-color: blue;
     height: 10vh;
-    background-color: #ffe02e;
+    background-color: $yellowColor;
     height: 5vh;
     p {
         display: flex;
@@ -187,5 +216,5 @@ footer{
     }
 }
 
-@import 'carousel';
 @import 'mobile';
+// @import 'carousel';

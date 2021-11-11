@@ -14,10 +14,19 @@ movieApp.getMovieInfo = (argument, argumentTwo) => {
     })
     fetch(url)
         .then((response) => {
-            return response.json()
+            if(response.ok){
+                return response.json()
+            }else{
+                throw new Error(res.statusText)
+            }
         })
         .then((jsonResponse) => {
             movieApp.displayMovieInfo(jsonResponse)
+        })
+        .catch((error) => {
+            if (error.message === "Not Found"){
+                alert("Please search again!")
+            }
         })
 }
 
@@ -45,8 +54,8 @@ movieApp.displayMovieInfo = (dataMovie) => {
 
         if (item.poster_path && item.overview && item.popularity) {
             const ulElement = document.querySelector('ul')
-            const li = document.createElement('li')
             const img = document.createElement('img')
+            const li = document.createElement('li')
             const infoElement = document.createElement('p')
             const imgDefault = 'https://image.tmdb.org/t/p/w500'
 
@@ -56,7 +65,7 @@ movieApp.displayMovieInfo = (dataMovie) => {
             li.append(img)
             ulElement.appendChild(li)
 
-            infoElement.innerHTML = `<div>${item.original_title}</div><p>${item.overview}</p><div>${item.popularity}</div>`
+            infoElement.innerHTML = `<h2>${item.original_title}</h2><p>${item.overview}</p><div>${item.popularity}</div>`
             li.append(infoElement)
         }
     });
@@ -65,6 +74,8 @@ movieApp.displayMovieInfo = (dataMovie) => {
 movieApp.setUpEventListner = () => {
 
     const formElement = document.querySelector('form')
+    const popUpElement = document.querySelector('.popUpError')
+
     formElement.addEventListener('submit', function (e) {
         e.preventDefault();
         const headerElement = document.querySelector('header')
@@ -74,9 +85,17 @@ movieApp.setUpEventListner = () => {
             movieApp.getMovieInfo(movieApp.userSearchTerm, movieApp.userLanguage)
             movieApp.headerElement.style.display = 'none'
             movieApp.iconElement.style.display = 'block'
-            //movieApp.carousel()
+            movieApp.carousel()
         } else {
-            alert('Please enter a movie name; at least!')
+            popUpElement.innerHTML = '<p>At least put something!!!</p><button class="goBack">Return</button>'
+            popUpElement.addEventListener('click', function(event){
+                if(event.target.tagName === 'BUTTON'){
+                    event.preventDefault();
+                    document.getElementById('popUp').style.display='none'
+                    document.getElementById('popUp').innerHTML = ''
+                }
+            })
+
         }
     })
 }
@@ -91,40 +110,10 @@ movieApp.backButton = () => {
     })
 }
 
-// movieApp.carousel = () => {
-    
-//     const controls = document.querySelector('.controls')
-//     controls.style.display = 'flex'
+movieApp.carousel = () => {
 
-//     const ulElement = document.querySelector('ul')
-//     ulElement.style.display = 'inherit'
     
-//     const delay = 3000;
-
-//     const slides = document.querySelector('ul');
-//     const slidesCount = slides.childElementCount;
-//     const maxLeft = (slidesCount - 1) * 100 * -1;
-    
-//     let current = 0;
-    
-//     function changeSlide(next = true) {
-//       if (next) {
-//         current += current > maxLeft ? -100 : current * -1;
-//       } else {
-//         current = current < 0 ? current + 100 : maxLeft;
-//       }
-    
-//       slides.style.left = current + "%";
-//     }
-
-//     document.querySelector(".next-slide").addEventListener("click", function() {
-//       changeSlide();
-//     });
-    
-//     document.querySelector(".prev-slide").addEventListener("click", function() {
-//       changeSlide(false);
-//     });
-// }
+}
 
 movieApp.init = () => {
     movieApp.expandingBar()
