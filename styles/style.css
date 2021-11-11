@@ -272,6 +272,7 @@ header .imgContainer {
           justify-content: center;
   -ms-flex-line-pack: center;
       align-content: center;
+  margin-top: 30px;
 }
 header .imgContainer div {
   background-size: cover;
@@ -282,12 +283,15 @@ header .imgContainer div {
 }
 header .imgContainer .imageOne {
   background-image: url(../assets/imageOne.jpeg);
+  border-radius: 10px;
 }
 header .imgContainer .imageTwo {
   background-image: url(../assets/imageTwo.jpeg);
+  border-radius: 10px;
 }
 header .imgContainer .imageThree {
   background-image: url(../assets/imageThree.jpeg);
+  border-radius: 10px;
 }
 header h1 {
   -ms-flex-item-align: center;
@@ -367,6 +371,8 @@ header h1 {
   cursor: pointer;
   -ms-flex-item-align: center;
       align-self: center;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
 }
 .searchContainer .search {
   display: -webkit-box;
@@ -442,41 +448,9 @@ ul h2 {
   padding-bottom: 20px;
 }
 
-.controls {
-  display: none;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 100%;
-  z-index: 99999;
-  -webkit-transition: all ease 0.5s;
-  transition: all ease 0.5s;
-}
-.controls .control {
-  display: none;
-  margin: 0 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.7);
-  opacity: 0.5;
-  -webkit-transition: ease 0.3s;
-  transition: ease 0.3s;
-  cursor: pointer;
-}
-
 footer {
   height: 10vh;
-  background-color: #ffe02e;
+  background-color: #a08044;
   height: 5vh;
 }
 footer p {

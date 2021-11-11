@@ -1,4 +1,23 @@
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyDbO3S9lL5kraG_MrhvTGUjlXvueL5m5GA",
+    authDomain: "group-project-movie-app.firebaseapp.com",
+    projectId: "group-project-movie-app",
+    storageBucket: "group-project-movie-app.appspot.com",
+    messagingSenderId: "482529858431",
+    appId: "1:482529858431:web:db9d7f4dd77780cc4f004a",
+    measurementId: "G-82R57QS5Z5"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig)
+
+const dbRef = firebase.database().ref()
+
+/////
+
 const movieApp = {}
 
 movieApp.apiKey = `bfb23e9c017a2be83f91472023334cb6`
@@ -14,9 +33,9 @@ movieApp.getMovieInfo = (argument, argumentTwo) => {
     })
     fetch(url)
         .then((response) => {
-            if(response.ok){
+            if (response.ok) {
                 return response.json()
-            }else{
+            } else {
                 throw new Error(res.statusText)
             }
         })
@@ -24,7 +43,7 @@ movieApp.getMovieInfo = (argument, argumentTwo) => {
             movieApp.displayMovieInfo(jsonResponse)
         })
         .catch((error) => {
-            if (error.message === "Not Found"){
+            if (error.message === "Not Found") {
                 alert("Please search again!")
             }
         })
@@ -88,10 +107,10 @@ movieApp.setUpEventListner = () => {
             movieApp.carousel()
         } else {
             popUpElement.innerHTML = '<p>At least put something!!!</p><button class="goBack">Return</button>'
-            popUpElement.addEventListener('click', function(event){
-                if(event.target.tagName === 'BUTTON'){
+            popUpElement.addEventListener('click', function (event) {
+                if (event.target.tagName === 'BUTTON') {
                     event.preventDefault();
-                    document.getElementById('popUp').style.display='none'
+                    document.getElementById('popUp').style.display = 'none'
                     document.getElementById('popUp').innerHTML = ''
                 }
             })
@@ -106,13 +125,14 @@ movieApp.backButton = () => {
     movieApp.iconElement.addEventListener('click', function (event) {
         movieApp.headerElement.style.display = 'flex'
         movieApp.emptyResults()
+        movieApp.iconElement.style.display = 'none'
 
     })
 }
 
 movieApp.carousel = () => {
 
-    
+
 }
 
 movieApp.init = () => {

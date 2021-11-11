@@ -3,6 +3,7 @@
 
 $blackColor: #2C2C2C;
 $yellowColor: #ffe02e;
+$yellow2Color: rgb(160, 128, 68);
 
 body,
 ul,
@@ -23,7 +24,7 @@ html{
     font-family: 'Lato', sans-serif;
 
 }
-//added wrapper
+
 .wrapper{
     width: 80%;
     margin: 0 auto;
@@ -39,6 +40,7 @@ header{
         flex-wrap: wrap;
         justify-content: center;
         align-content: center;
+        margin-top: 30px;
         div{
             background-size: cover;
             background-position: center;
@@ -48,12 +50,15 @@ header{
         }
         .imageOne{
             background-image: url(../assets/imageOne.jpeg);
+            border-radius: 10px;
         }
         .imageTwo{
             background-image: url(../assets/imageTwo.jpeg);
+            border-radius: 10px;
         }
         .imageThree{
             background-image: url(../assets/imageThree.jpeg);
+            border-radius: 10px;
         }
     }
     h1{
@@ -120,6 +125,7 @@ header{
         z-index: 10;
         cursor: pointer;
         align-self: center;
+        transition: all 1s ease;
     }   
     .search{
         display: flex;
@@ -179,32 +185,9 @@ ul {
     }
 }
 
-.controls{
-    display: none;
-    justify-content: space-between;
-    width: 100%;
-    z-index: 99999;
-    transition: all ease 0.5s;
-    .control{
-        display: none;
-        margin: 0 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.7);
-        opacity: 0.5;
-        transition: ease 0.3s;
-        cursor: pointer;
-    }
-}
-
-
 footer{
     height: 10vh;
-    background-color: $yellowColor;
+    background-color: $yellow2Color;
     height: 5vh;
     p {
         display: flex;
