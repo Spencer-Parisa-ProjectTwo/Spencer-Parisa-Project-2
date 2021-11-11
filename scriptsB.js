@@ -53,7 +53,7 @@ movieApp.expandingBar = () => {
     const searchBtn = document.querySelector('.searchBtn')
     const inputEl = document.querySelector('.searchInput')
 
-    searchBtn.addEventListener('click', function () {
+    searchBtn.addEventListener('mouseover', function () {
         inputEl.style.width = '50%'
         inputEl.style.cursor = 'text';
         inputEl.focus();
@@ -97,7 +97,6 @@ movieApp.setUpEventListner = () => {
 
     formElement.addEventListener('submit', function (e) {
         e.preventDefault();
-        const headerElement = document.querySelector('header')
         movieApp.userSearchTerm = document.querySelector('input[name=search]').value;
         movieApp.userLanguage = document.querySelector('select[name=language]').value;
         if (movieApp.userSearchTerm !== "") {
@@ -110,6 +109,7 @@ movieApp.setUpEventListner = () => {
             popUpElement.addEventListener('click', function (event) {
                 if (event.target.tagName === 'BUTTON') {
                     event.preventDefault();
+                    document.getElementById('popUp').style.display = 'none'
                     document.getElementById('popUp').style.display = 'none'
                     document.getElementById('popUp').innerHTML = ''
                 }

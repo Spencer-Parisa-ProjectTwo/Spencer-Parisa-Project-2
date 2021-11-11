@@ -64,7 +64,7 @@ header{
     h1{
         align-self: center;
         color: white;
-        font-size: 5.4rem;
+        font-size: 6.7rem;
         margin-top: 40px;
         font-family: 'Mr Dafoe', cursive;
     }
@@ -82,9 +82,14 @@ header{
         background-color: $blackColor;
         display: flex;
         flex-direction: column;
+        // transition: all 1s ease-in-out;
         z-index: 20;
         button{
             margin: 20px;
+            &:hover, 
+            &:focus{
+                color: $yellow2Color;
+        }
         }
         p{
             margin: 20px;
@@ -108,7 +113,7 @@ header{
     select[name=year] {
         border: none;
         font-family: 'Lato', sans-serif;
-        border-radius: 2px;
+        border-radius: 10px;
         font-size: 15px;
         line-height: 32px;
         letter-spacing: 1px;
@@ -125,7 +130,6 @@ header{
         z-index: 10;
         cursor: pointer;
         align-self: center;
-        transition: all 1s ease;
     }   
     .search{
         display: flex;
@@ -152,6 +156,11 @@ header{
         line-height: 32px;
         letter-spacing: 1px;
         cursor: pointer;
+        // transition: ;
+        &:hover, 
+        &:focus{
+                color: $yellow2Color;
+        }
     } 
     .positioning{
         position: relative;
@@ -177,8 +186,9 @@ ul {
         width: 70%;
     }
     img{
-    height: 400px;
-    width: 300px;
+        border-radius: 30px;
+        height: 400px;
+        width: 300px;
     }
     h2{
         padding-bottom: 20px;
