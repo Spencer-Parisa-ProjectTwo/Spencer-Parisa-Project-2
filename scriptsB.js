@@ -1,4 +1,4 @@
-// A movie app where the user enters a complete title of a movie and gets the ratings and an overview of the movie (with other information possibly from the API), or selects a criteria from a drop down menu to find movies accordingly that match the criteria 
+// A movie app where the user enters a complete/incomplete title of a movie and gets the ratings and an overview of the movie (with other information possibly from the API), or selects a criteria from a drop down menu to find movies accordingly that match the criteria 
 
 //1. Create app object
 // 1. Save user inputs into constants 
@@ -47,7 +47,6 @@ movieApp.getMovieInfo = (argument, argumentTwo) => {
     fetch(url)
         .then((response) => {
             if (response.ok) {
-                console.log(response)
                 return response.json()
             } else {
                 throw new Error(res.statusText)
@@ -142,9 +141,6 @@ movieApp.backButton = () => {
         movieApp.iconElement.style.display = 'none'
         movieApp.placeHolder.style.display = 'none'
         movieApp.burgerMenu.style.display = 'none'
-
-
-
     })
 }
 
@@ -188,7 +184,7 @@ movieApp.init = () => {
     movieApp.expandingBar()
     movieApp.setUpEventListner()
     movieApp.backButton()
-    movieApp.firebaseConnector()
+    //movieApp.firebaseConnector()
 }
 
 movieApp.init();
