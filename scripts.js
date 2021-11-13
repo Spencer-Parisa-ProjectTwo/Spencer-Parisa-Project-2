@@ -1,5 +1,4 @@
-
-// A movie app where the user enters a complete title of a movie and gets the ratings and an overview of the movie (with other information possibly from the API), or selects a criteria from a drop down menu to find movies accordingly that match the criteria 
+// A movie app where the user enters a complete/incomplete title of a movie and gets the ratings and an overview of the movie (with other information possibly from the API), or selects a criteria from a drop down menu to find movies accordingly that match the criteria 
 
 //1. Create app object
 // 1. Save user inputs into constants 
@@ -15,6 +14,22 @@
 // STRETCH GOALS
 // Carousel/image gallery that you can swipe through of different movies
 // A 2nd api that displays trailers in a small pop up box to the side
+//Firebase
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDbO3S9lL5kraG_MrhvTGUjlXvueL5m5GA",
+    authDomain: "group-project-movie-app.firebaseapp.com",
+    projectId: "group-project-movie-app",
+    storageBucket: "group-project-movie-app.appspot.com",
+    messagingSenderId: "482529858431",
+    appId: "1:482529858431:web:db9d7f4dd77780cc4f004a",
+    measurementId: "G-82R57QS5Z5"
+};
+
+firebase.initializeApp(firebaseConfig)
+const dbRef = firebase.database().ref()
+
+/////
 
 const movieApp = {}
 
@@ -22,22 +37,30 @@ movieApp.apiKey = `bfb23e9c017a2be83f91472023334cb6`
 movieApp.apiUrl = 'https://api.themoviedb.org/3/search/movie'
 
 
-movieApp.getMovieInfo = (argument) => {
+movieApp.getMovieInfo = (argument, argumentTwo) => {
     const url = new URL(movieApp.apiUrl)
     url.search = new URLSearchParams({
         api_key: movieApp.apiKey,
         query: argument,
-        page: 1,
-        //language: movieApp.userLanguage
+        language: argumentTwo
     })
     fetch(url)
         .then((response) => {
-            return response.json()
+            if (response.ok) {
+                return response.json()
+            } else {
+                throw new Error(res.statusText)
+            }
         })
         .then((jsonResponse) => {
             movieApp.displayMovieInfo(jsonResponse)
             //movieApp.getLanguage(jsonResponse)
             //movieApp.fiveRandomOptions(jsonResponse)
+        })
+        .catch((error) => {
+            if (error.message === "Not Found") {
+                alert("Please search again!")
+            }
         })
 }
 
@@ -51,7 +74,7 @@ movieApp.expandingBar = () => {
     const searchBtn = document.querySelector('.searchBtn')
     const inputEl = document.querySelector('.searchInput')
 
-    searchBtn.addEventListener('click', function(){
+    searchBtn.addEventListener('mouseover', function () {
         inputEl.style.width = '50%'
         inputEl.style.cursor = 'text';
         inputEl.focus();
@@ -59,15 +82,20 @@ movieApp.expandingBar = () => {
     })
 }
 
-movieApp.displayMovieInfo = (dataMovie) => {
-        const firstFive = dataMovie.results.slice(0, 4)
-        console.log(firstFive)
+movieApp.emptyResults = () => {
+    const resultsEl = document.querySelector('ul')
+    resultsEl.innerHTML = ""
+}
 
-        const ulElement = document.querySelector('ul')
-        firstFive.forEach((item) => {
-            if(item.poster_path && item.overview){
-            const li = document.createElement('li')
+movieApp.displayMovieInfo = (dataMovie) => {
+    movieApp.emptyResults()
+    const firstFive = dataMovie.results.slice(0, 4)
+    firstFive.forEach((item) => {
+
+        if (item.poster_path && item.popularity) {
+            const ulElement = document.querySelector('ul')
             const img = document.createElement('img')
+            const li = document.createElement('li')
             const infoElement = document.createElement('p')
             const imgDefault = 'https://image.tmdb.org/t/p/w500'
 
@@ -77,62 +105,91 @@ movieApp.displayMovieInfo = (dataMovie) => {
             li.append(img)
             ulElement.appendChild(li)
 
-            infoElement.innerHTML = `<div>${item.original_title}</div><p>${item.overview}</p><div>${item.popularity}</div>`
+            infoElement.innerHTML = `<h2>${item.original_title}</h2><p>${item.overview}</p><div>Popularity index : ${item.popularity}</div>`
             li.append(infoElement)
-            }
+          
+movieApp.setUpEventListner = () => {
 
-        });
-// })
-}  
+    const formElement = document.querySelector('form')
+    const popUpElement = document.querySelector('.popUpError')
+    const result = document.querySelector('.results')
 
-movieApp.emptyResults = () => {
-    const resultsEl = document.querySelector('.results')
-    resultsEl.innerHTML = ""
+    formElement.addEventListener('submit', function (e) {
+        e.preventDefault();
+        movieApp.userSearchTerm = document.querySelector('input[name=search]').value;
+        movieApp.userLanguage = document.querySelector('select[name=language]').value;
+        if (movieApp.userSearchTerm !== "") {
+            movieApp.getMovieInfo(movieApp.userSearchTerm, movieApp.userLanguage)
+            movieApp.headerElement.style.display = 'none'
+            movieApp.iconElement.style.display = 'block'
+        } else {
+            popUpElement.innerHTML = '<p>At least put something!!!</p><button class="goBack">Return</button>'
+            popUpElement.addEventListener('click', function (event) {
+                if (event.target.tagName === 'BUTTON') {
+                    event.preventDefault();
+                    document.getElementById('popUp').style.display = 'none'
+z                    document.getElementById('popUp').style.display = 'none'
+                    document.getElementById('popUp').innerHTML = ''
+                }
+            })
+
+        }
+    })
+}
+
+movieApp.backButton = () => {
+    movieApp.iconElement = document.querySelector('.fa-chevron-left')
+    movieApp.headerElement = document.querySelector('header')
+    movieApp.iconElement.addEventListener('click', function () {
+        movieApp.headerElement.style.display = 'flex'
+        movieApp.emptyResults()
+        movieApp.iconElement.style.display = 'none'
+        movieApp.placeHolder.style.display = 'none'
+        movieApp.burgerMenu.style.display = 'none'
+    })
+}
+
+movieApp.firebaseConnector = () => {
+
+    movieApp.placeHolder = document.querySelector('.searchedItems ol')
+
+    const searchedTerms = {
+        searched: document.querySelector('input[name=search]').value
+    }
+    dbRef.push(searchedTerms)
+
+    dbRef.on('value', (data) => {
+        const searchedFromFb = data.val()
+
+        const arrayOfSearched = []
+        for (prop in searchedFromFb) {
+            console.log(searchedFromFb[prop].searched)
+            const searchedItems = document.createElement('li')
+            searchedItems.appendChild(document.createTextNode(searchedFromFb[prop].searched))
+
+            arrayOfSearched.push(searchedItems.outerHTML)
+            //movieApp.placeHolder.innerHTML = arrayOfSearched.join('')
+
+
+            movieApp.iconElementTwo = document.querySelector('.fa-bars')
+            movieApp.burgerMenu = document.querySelector('.burgerMenu')
+            movieApp.iconElementTwo.addEventListener('click', function () {
+                movieApp.burgerMenu.innerHTML = `<h3>Search History</h3>`
+            })
+            movieApp.burgerMenu.addEventListener('click', function () {
+                console.log('hello')
+                movieApp.placeHolder.innerHTML = arrayOfSearched.join('')
+            })
+
+        }
+    })
 }
 
 movieApp.init = () => {
     movieApp.expandingBar()
-    // const ulElement = document.querySelector('ul')
-    const formElement = document.querySelector('form')
-    formElement.addEventListener('submit', function(e){
-        e.preventDefault();
-        const headerElement = document.querySelector('header')
-        const iconElement = document.querySelector('i')
-        // every time someone presses header, make it go away
-        headerElement.style.display = 'none'
-        iconElement.style.display = 'block'
-        movieApp.userSearchTerm = document.querySelector('input[name=search]').value;
-        //movieApp.userLanguage = document.querySelector('select[name=language]').value;
-        movieApp.getMovieInfo(movieApp.userSearchTerm)
-    })
+    movieApp.setUpEventListner()
+    movieApp.backButton()
+    //movieApp.firebaseConnector()
 }
 
-movieApp.init()
-
-
-// const resultsEl = document.querySelector('.results')
-// resultsEl.innerHTML = ""
-//movieApp.userSearchTerm.textContent = ''
-
-// if(movieApp.userSearchTerm !== ""){
-//     movieApp.getMovieInfo()
-// }else{
-//     alert("enter a title!")
-// }
-
-
-//only publishing 5 of the results 
-// movieApp.fiveRandomOptions = (allData) => {
-//    const movieIndexOne = Math.floor(math.random() * allData.length)
-//    const movieIndexTwo = Math.floor(math.random() * allData.length)
-//    const movieIndexThree = Math.floor(math.random() * allData.length)
-//    const movieIndexFour = Math.floor(math.random() * allData.length)
-//    //movieApp.displayMovieInfo(movieIndexOne, movieIndexTwo, movieIndexThree, movieIndexFour)
-//    //return allData[movieIndexOne, movieIndexTwo, movieIndexThree, movieIndexFour]
-//    const randomChoices = []
-//    return randomChoices[movieIndexOne, movieIndexTwo, movieIndexThree, movieIndexFour]
-// }
-
-// const choices = []
-// choices = movieApp.fiveRandomOptions()
-// console.log(choices)
+movieApp.init();

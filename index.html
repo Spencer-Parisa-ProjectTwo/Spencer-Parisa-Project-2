@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charscet="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://kit.fontawesome.com/8ddd0c5769.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Mr+Dafoe&family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap" rel="stylesheet">
     <title>ProjectTwo</title>
 </head>
+
 <body>
     <main>
         <header>
+            <i class="fas fa-bars"></i>
+            <div class="burgerMenu"></div>
             <div class="imgContainer">
                 <div class="imageOne"></div>
                 <div class="imageTwo"></div>
                 <div class="imageThree"></div>
+            </div>
+            <div class="searchedItems">
+                <ol></ol>
             </div>
             <h1>Film Flicker</h1>
         </header>
@@ -26,35 +29,21 @@
             <form class="wrapper search">
                 <i class="fas fa-chevron-left"></i>
                 <div class="positioning">
-                    <!-- added img -->
                     <label for="text" class="sr-only"></label>
-                    <img class="searchBtn" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/search.svg" id="search-btn" alt="search button">
+                    <img class="searchBtn" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/search.svg"
+                        id="search-btn" alt="search button">
                     <input type="text" class="searchInput" name="search" id="text" placeholder="">
                 </div>
-                
+
                 <div class="dropDown">
-                    
+
                     <label for="language" class="sr-only">Language</label>
                     <select name="language">
-                        <option value="English">English</option>
-                        <option value="French">French </option>
-                        <option value="German">German</option>
-                        <option value="Spanish">Spanish</option>
-                    </select>
-                    
-                    <label for="year" class="sr-only">Year</label>
-                    <select id="year" name="year">
-                        <option value disabled selected>Choose year</option>
-                        <option value="thirties">30's</option>
-                        <option value="fourties">40's</option>
-                        <option value="fifties">50's</option>
-                        <option value="sixties">60's</option>
-                        <option value="seventies">70's</option>
-                        <option value="eighties">80's</option>
-                        <option value="ninties">90's</option>
-                        <option value="twoThousand">2000's</option>
-                        <option value="twoThousandTen">2010's</option>
-                        <option value="twoThousandTwenty">2020's</option>
+                        <option value disabled selected>Choose Language</option>
+                        <option value="en">English</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="es">Spanish</option>
                     </select>
                 </div>
                 <button class="submit" type="submit">Search</button>
@@ -64,20 +53,21 @@
         <section class="results">
             <div class="posterPlaceholder">
                 <ul>
-                    <div class="infoPlaceholder">
-                        <div class="overview"></div>
-                        <div class="year"></div>
-                        <div class="rating"></div>
-                    </div>
                 </ul>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>Created &#64; Juno College by Parisa & Spencer</p>
+        <p>Created at Juno College by Parisa & Spencer</p>
     </footer>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
 
     <script src="./scripts.js"></script>
+
+
 </body>
+
 </html>
