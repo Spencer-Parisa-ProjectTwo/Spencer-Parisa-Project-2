@@ -18,6 +18,8 @@
 <body>
     <main>
         <header>
+            <i class="fas fa-bars"></i>
+            <div class="burgerMenu"></div>
             <div class="imgContainer">
                 <div class="imageOne"></div>
                 <div class="imageTwo"></div>
@@ -47,21 +49,6 @@
                         <option value="de">German</option>
                         <option value="es">Spanish</option>
                     </select>
-
-                    <label for="year" class="sr-only">Year</label>
-                    <select id="year" name="year">
-                        <option value disabled selected>Choose Year</option>
-                        <option value="thirties">30's</option>
-                        <option value="fourties">40's</option>
-                        <option value="fifties">50's</option>
-                        <option value="sixties">60's</option>
-                        <option value="seventies">70's</option>
-                        <option value="eighties">80's</option>
-                        <option value="ninties">90's</option>
-                        <option value="twoThousand">2000's</option>
-                        <option value="twoThousandTen">2010's</option>
-                        <option value="twoThousandTwenty">2020's</option>
-                    </select>
                 </div>
                 <button class="submit" type="submit">Search</button>
             </form>
@@ -72,6 +59,9 @@
                 <ul>
                 </ul>
             </div>
+            <div class="searchedItems">
+                <p></p>
+            </div>
         </section>
     </main>
 
@@ -81,7 +71,7 @@
     
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
-    
+
     <script src="./scriptsB.js"></script>
 
 

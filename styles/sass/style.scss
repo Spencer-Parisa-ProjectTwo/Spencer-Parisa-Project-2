@@ -2,8 +2,7 @@
 @import 'normalized';
 
 $blackColor: #2C2C2C;
-$yellowColor: #ffe02e;
-$yellow2Color: rgb(160, 128, 68);
+$yellowColor: rgb(160, 128, 68);
 
 body,
 ul,
@@ -35,6 +34,15 @@ header{
     display: flex;
     flex-direction: column;
     height: 60vh;
+    position: relative;
+    i{
+        position: absolute;
+        color: white;
+        // transition: all 2s ease;
+        font-size: 40px;
+        top: 40px;
+        left: 40px;
+    }
     .imgContainer{
         display: flex;
         flex-wrap: wrap;
@@ -68,6 +76,16 @@ header{
         margin-top: 40px;
         font-family: 'Mr Dafoe', cursive;
     }
+    h3{
+        color: white;
+        font-size: 2.9rem;
+        position: absolute;
+        left: 100px;
+        top: 10px;
+        background-color: black;
+        padding: 10px;
+        // transition: all 2s ease;
+    }
 }
 .searchContainer{
     background-color: black;
@@ -88,7 +106,7 @@ header{
             margin: 20px;
             &:hover, 
             &:focus{
-                color: $yellow2Color;
+                color: $yellowColor;
         }
         }
         p{
@@ -156,10 +174,9 @@ header{
         line-height: 32px;
         letter-spacing: 1px;
         cursor: pointer;
-        // transition: ;
         &:hover, 
         &:focus{
-                color: $yellow2Color;
+                color: $yellowColor;
         }
     } 
     .positioning{
@@ -193,11 +210,14 @@ ul {
     h2{
         padding-bottom: 20px;
     }
+    div{
+        color: $yellowColor;
+    }
 }
 
 footer{
     height: 10vh;
-    background-color: $yellow2Color;
+    background-color: $yellowColor;
     height: 5vh;
     p {
         display: flex;
@@ -209,5 +229,14 @@ footer{
     }
 }
 
+.searchedItems{
+    li{
+        font-size: 40px;
+        //display: none;
+    }
+    p{
+        //display: none;
+    }
+}
+
 @import 'mobile';
-// @import 'carousel';

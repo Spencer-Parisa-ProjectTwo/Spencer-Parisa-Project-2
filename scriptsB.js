@@ -1,6 +1,21 @@
+// A movie app where the user enters a complete title of a movie and gets the ratings and an overview of the movie (with other information possibly from the API), or selects a criteria from a drop down menu to find movies accordingly that match the criteria 
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+//1. Create app object
+// 1. Save user inputs into constants 
+// 2. Fetching movie data from the API and storing it in a function
+// 3. Then go through the API and filter movies by matching criteria of user (could be using if statements according to which criteria user has filled) 
+// 4. Create a function for display movie function append to the page with a poster and about blurb containing popularity, release date, title, genre, overview, adult movie or not, and total rating (can be modified)
+// 5. Specifically, when we fetch the data, we want to append it to a separate page (empty div in html)
+// 6. make init method and call displaymovie and getmovieinfo functions
+// 7. call init function
+
+// 8. error handling to empty each time our divs, make sure at least one criteria in entered
+
+// STRETCH GOALS
+// Carousel/image gallery that you can swipe through of different movies
+// A 2nd api that displays trailers in a small pop up box to the side
+//Firebase
+
 const firebaseConfig = {
     apiKey: "AIzaSyDbO3S9lL5kraG_MrhvTGUjlXvueL5m5GA",
     authDomain: "group-project-movie-app.firebaseapp.com",
@@ -11,9 +26,7 @@ const firebaseConfig = {
     measurementId: "G-82R57QS5Z5"
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig)
-
 const dbRef = firebase.database().ref()
 
 /////
@@ -34,6 +47,7 @@ movieApp.getMovieInfo = (argument, argumentTwo) => {
     fetch(url)
         .then((response) => {
             if (response.ok) {
+                console.log(response)
                 return response.json()
             } else {
                 throw new Error(res.statusText)
@@ -71,7 +85,7 @@ movieApp.displayMovieInfo = (dataMovie) => {
     const firstFive = dataMovie.results.slice(0, 4)
     firstFive.forEach((item) => {
 
-        if (item.poster_path && item.overview && item.popularity) {
+        if (item.poster_path && item.popularity) {
             const ulElement = document.querySelector('ul')
             const img = document.createElement('img')
             const li = document.createElement('li')
@@ -84,7 +98,7 @@ movieApp.displayMovieInfo = (dataMovie) => {
             li.append(img)
             ulElement.appendChild(li)
 
-            infoElement.innerHTML = `<h2>${item.original_title}</h2><p>${item.overview}</p><div>${item.popularity}</div>`
+            infoElement.innerHTML = `<h2>${item.original_title}</h2><p>${item.overview}</p><div>Popularity index : ${item.popularity}</div>`
             li.append(infoElement)
         }
     });
@@ -94,6 +108,7 @@ movieApp.setUpEventListner = () => {
 
     const formElement = document.querySelector('form')
     const popUpElement = document.querySelector('.popUpError')
+    const result = document.querySelector('.results')
 
     formElement.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -103,7 +118,6 @@ movieApp.setUpEventListner = () => {
             movieApp.getMovieInfo(movieApp.userSearchTerm, movieApp.userLanguage)
             movieApp.headerElement.style.display = 'none'
             movieApp.iconElement.style.display = 'block'
-            movieApp.carousel()
         } else {
             popUpElement.innerHTML = '<p>At least put something!!!</p><button class="goBack">Return</button>'
             popUpElement.addEventListener('click', function (event) {
@@ -120,9 +134,9 @@ movieApp.setUpEventListner = () => {
 }
 
 movieApp.backButton = () => {
-    movieApp.iconElement = document.querySelector('i')
+    movieApp.iconElement = document.querySelector('.fa-chevron-left')
     movieApp.headerElement = document.querySelector('header')
-    movieApp.iconElement.addEventListener('click', function (event) {
+    movieApp.iconElement.addEventListener('click', function () {
         movieApp.headerElement.style.display = 'flex'
         movieApp.emptyResults()
         movieApp.iconElement.style.display = 'none'
@@ -130,15 +144,61 @@ movieApp.backButton = () => {
     })
 }
 
-movieApp.carousel = () => {
+movieApp.firebaseConnector = () => {
+
+    movieApp.placeHolder = document.querySelector('.searchedItems p')
+
+    const searchedTerms = {
+        searched: document.querySelector('input[name=search]').value
+    }
+    dbRef.push(searchedTerms)
+
+    dbRef.on('value', (data) => {
+        const searchedFromFb = data.val()
+
+        const arrayOfSearched = []
+        for (prop in searchedFromFb) {
+            console.log(searchedFromFb[prop].searched)
+            const searchedItems = document.createElement('li')
+            searchedItems.appendChild(document.createTextNode(searchedFromFb[prop].searched))
+
+            arrayOfSearched.push(searchedItems.outerHTML)
+            //movieApp.placeHolder.innerHTML = arrayOfSearched.join('')
 
 
+            movieApp.iconElementTwo = document.querySelector('.fa-bars')
+            movieApp.burgerMenu = document.querySelector('.burgerMenu')
+            movieApp.iconElementTwo.addEventListener('click', function () {
+                movieApp.burgerMenu.innerHTML = `<h3>Search History</h3>`
+            })
+            movieApp.burgerMenu.addEventListener('click', function () {
+                console.log('hello')
+                movieApp.placeHolder.innerHTML = arrayOfSearched.join('')
+            })
+
+        }
+    })
 }
+
+// movieApp.burgerBar = () => {
+//     movieApp.iconElementTwo = document.querySelector('.fa-bars')
+//     movieApp.burgerMenu = document.querySelector('.burgerMenu')
+//     movieApp.iconElementTwo.addEventListener('click', function () {
+//         movieApp.burgerMenu.innerHTML = `<h3>Search History</h3>`
+//     })
+//     movieApp.burgerMenu.addEventListener('click', function () {
+//         console.log('hello')
+//         //movieApp.placeHolder.style.display = 'inherit'
+//     })
+// }
+
 
 movieApp.init = () => {
     movieApp.expandingBar()
     movieApp.setUpEventListner()
     movieApp.backButton()
+    movieApp.firebaseConnector()
+    movieApp.burgerBar()
 }
 
 movieApp.init();
