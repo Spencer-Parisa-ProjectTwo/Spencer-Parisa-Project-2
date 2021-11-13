@@ -140,13 +140,17 @@ movieApp.backButton = () => {
         movieApp.headerElement.style.display = 'flex'
         movieApp.emptyResults()
         movieApp.iconElement.style.display = 'none'
+        movieApp.placeHolder.style.display = 'none'
+        movieApp.burgerMenu.style.display = 'none'
+
+
 
     })
 }
 
 movieApp.firebaseConnector = () => {
 
-    movieApp.placeHolder = document.querySelector('.searchedItems p')
+    movieApp.placeHolder = document.querySelector('.searchedItems ol')
 
     const searchedTerms = {
         searched: document.querySelector('input[name=search]').value
@@ -180,25 +184,11 @@ movieApp.firebaseConnector = () => {
     })
 }
 
-// movieApp.burgerBar = () => {
-//     movieApp.iconElementTwo = document.querySelector('.fa-bars')
-//     movieApp.burgerMenu = document.querySelector('.burgerMenu')
-//     movieApp.iconElementTwo.addEventListener('click', function () {
-//         movieApp.burgerMenu.innerHTML = `<h3>Search History</h3>`
-//     })
-//     movieApp.burgerMenu.addEventListener('click', function () {
-//         console.log('hello')
-//         //movieApp.placeHolder.style.display = 'inherit'
-//     })
-// }
-
-
 movieApp.init = () => {
     movieApp.expandingBar()
     movieApp.setUpEventListner()
     movieApp.backButton()
     movieApp.firebaseConnector()
-    movieApp.burgerBar()
 }
 
 movieApp.init();

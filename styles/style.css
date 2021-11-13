@@ -491,9 +491,19 @@ footer p {
   font-family: "Lato", sans-serif;
 }
 
-.searchedItems li {
-  font-size: 40px;
+.searchedItems {
+  position: absolute;
+  left: 400px;
+  top: 20px;
 }
+.searchedItems ol {
+  list-style-position: inside;
+  background-color: whitesmoke;
+}
+.searchedItems li {
+  font-size: 20px;
+}
+
 @media (max-width: 480px) {
   .imageOne,
 .imageThree {
