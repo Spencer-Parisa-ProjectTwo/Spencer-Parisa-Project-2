@@ -286,7 +286,7 @@ header .imgContainer div {
   background-size: cover;
   background-position: center;
   width: calc((100% / 3) - 40px);
-  height: 40vh;
+  height: 35vh;
   margin-right: 20px;
 }
 header .imgContainer .imageOne {
@@ -305,7 +305,6 @@ header h1 {
   -ms-flex-item-align: center;
       align-self: center;
   color: white;
-  font-size: 6.7rem;
   margin-top: 40px;
   font-family: "Mr Dafoe", cursive;
 }
@@ -329,31 +328,6 @@ header h3 {
           justify-content: center;
   height: 35vh;
 }
-.searchContainer .popUpError {
-  font-size: 30px;
-  color: white;
-  -ms-flex-item-align: center;
-      align-self: center;
-  position: absolute;
-  background-color: #2C2C2C;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  z-index: 20;
-}
-.searchContainer .popUpError button {
-  margin: 20px;
-}
-.searchContainer .popUpError button:hover, .searchContainer .popUpError button:focus {
-  color: #a08044;
-}
-.searchContainer .popUpError p {
-  margin: 20px;
-}
 .searchContainer input {
   background: #137191;
   width: 20px;
@@ -368,20 +342,6 @@ header h3 {
   -webkit-transition: width 1s ease;
   transition: width 1s ease;
   font-size: 1.6em;
-}
-.searchContainer select[name=language],
-.searchContainer select[name=year] {
-  border: none;
-  font-family: "Lato", sans-serif;
-  border-radius: 10px;
-  font-size: 15px;
-  line-height: 32px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  padding: 5px;
-}
-.searchContainer select[name=year] {
-  margin-left: 10px;
 }
 .searchContainer .searchBtn {
   width: 22px;

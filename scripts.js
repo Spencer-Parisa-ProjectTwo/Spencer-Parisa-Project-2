@@ -54,6 +54,8 @@ movieApp.getMovieInfo = (argument, argumentTwo) => {
         })
         .then((jsonResponse) => {
             movieApp.displayMovieInfo(jsonResponse)
+            //movieApp.getLanguage(jsonResponse)
+            //movieApp.fiveRandomOptions(jsonResponse)
         })
         .catch((error) => {
             if (error.message === "Not Found") {
@@ -105,10 +107,7 @@ movieApp.displayMovieInfo = (dataMovie) => {
 
             infoElement.innerHTML = `<h2>${item.original_title}</h2><p>${item.overview}</p><div>Popularity index : ${item.popularity}</div>`
             li.append(infoElement)
-        }
-    });
-}
-
+          
 movieApp.setUpEventListner = () => {
 
     const formElement = document.querySelector('form')
@@ -129,7 +128,7 @@ movieApp.setUpEventListner = () => {
                 if (event.target.tagName === 'BUTTON') {
                     event.preventDefault();
                     document.getElementById('popUp').style.display = 'none'
-                    document.getElementById('popUp').style.display = 'none'
+z                    document.getElementById('popUp').style.display = 'none'
                     document.getElementById('popUp').innerHTML = ''
                 }
             })

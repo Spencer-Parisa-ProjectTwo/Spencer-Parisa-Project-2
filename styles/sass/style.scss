@@ -34,15 +34,6 @@ header{
     display: flex;
     flex-direction: column;
     height: 60vh;
-    position: relative;
-    i{
-        position: absolute;
-        color: white;
-        // transition: all 2s ease;
-        font-size: 40px;
-        top: 40px;
-        left: 40px;
-    }
     .imgContainer{
         display: flex;
         flex-wrap: wrap;
@@ -53,9 +44,10 @@ header{
             background-size: cover;
             background-position: center;
             width: calc((100% / 3) - 40px);
-            height: 40vh;
+            height: 35vh;
             margin-right: 20px;
         }
+        
         .imageOne{
             background-image: url(../assets/imageOne.jpeg);
             border-radius: 10px;
@@ -126,21 +118,6 @@ header{
         transition: width 1s ease;
         font-size: 1.6em;
     }
-
-    select[name=language],
-    select[name=year] {
-        border: none;
-        font-family: 'Lato', sans-serif;
-        border-radius: 10px;
-        font-size: 15px;
-        line-height: 32px;
-        letter-spacing: 1px;
-        cursor: pointer;
-        padding: 5px;
-    }
-    select[name=year]{
-        margin-left: 10px;
-    }
     .searchBtn{
         width: 22px;
         height: 22px;
@@ -154,11 +131,6 @@ header{
         flex-direction: column;
         justify-content: center;
         i{
-            font-size: 50px;
-            color: white;
-            display: none;
-        }
-    }   
     .dropDown{
         align-self: center;
         margin: 20px 0 20px 0;
@@ -174,11 +146,6 @@ header{
         line-height: 32px;
         letter-spacing: 1px;
         cursor: pointer;
-        &:hover, 
-        &:focus{
-                color: $yellowColor;
-        }
-    } 
     .positioning{
         position: relative;
         display: flex;
