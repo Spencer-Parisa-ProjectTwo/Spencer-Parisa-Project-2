@@ -62,6 +62,12 @@ movieApp.getMovieInfo = (argument, argumentTwo) => {
         })
 }
 
+movieApp.getLanguage = (dataLanguage) => {
+    let currentLanguage = dataLanguage.filter((item) => {
+        return movieApp.userLanguage === dataLanguage.original_language
+    })
+}
+
 movieApp.expandingBar = () => {
     const searchBtn = document.querySelector('.searchBtn')
     const inputEl = document.querySelector('.searchInput')
