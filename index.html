@@ -2,10 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charscet="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato&family=Mr+Dafoe&family=Playfair+Display:ital,wght@1,700&family=Roboto&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8ddd0c5769.js" crossorigin="anonymous"></script>
     <title>ProjectTwo</title>
 </head>
 
@@ -13,20 +19,23 @@
     <main>
         <header>
             <i class="fas fa-bars"></i>
-            <div class="burgerMenu"></div>
+            <div class="topMenu">
+                <div class="burgerMenu"></div>
+                <div class="searchedItems">
+                    <ul></ul>
+                </div>
+            </div>    
             <div class="imgContainer">
                 <div class="imageOne"></div>
                 <div class="imageTwo"></div>
                 <div class="imageThree"></div>
-            </div>
-            <div class="searchedItems">
-                <ol></ol>
             </div>
             <h1>Film Flicker</h1>
         </header>
 
         <section class="searchContainer">
             <form class="wrapper search">
+                <div class="popUpError" id="popUp"></div>
                 <i class="fas fa-chevron-left"></i>
                 <div class="positioning">
                     <label for="text" class="sr-only"></label>
