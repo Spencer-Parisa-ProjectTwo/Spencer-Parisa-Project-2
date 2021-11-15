@@ -1,5 +1,11 @@
 
 @media(max-width: 480px){
+    header h1{
+        align-self: center;
+        color: white;
+        font-size:4.35rem;
+        font-family: 'Mr Dafoe', cursive;
+    }
     .imageOne, 
     .imageThree{
         display: none;

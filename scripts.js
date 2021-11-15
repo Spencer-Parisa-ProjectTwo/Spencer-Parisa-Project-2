@@ -103,7 +103,7 @@ movieApp.displayMovieInfo = (dataMovie) => {
             li.append(img)
             ulElement.appendChild(li)
 
-            infoElement.innerHTML = `<h2>${item.original_title}</h2><p>${item.overview}</p><div>Popularity index : ${item.popularity}</div>`
+            infoElement.innerHTML = `<h2>${item.original_title}</h2><p>${item.overview}</p><div>🌟 Rating : ${item.vote_average}/10</div><div>Total of ${item.vote_count} votes</div>`
             li.append(infoElement)
         }
     });
@@ -146,7 +146,6 @@ movieApp.backButton = () => {
         movieApp.emptyResults()
         movieApp.iconElement.style.display = 'none'
         movieApp.placeHolder.style.display = 'none'
-        movieApp.burgerMenu.style.display = 'none'
     })
 }
 
@@ -164,21 +163,29 @@ movieApp.firebaseConnector = () => {
 
         const arrayOfSearched = []
         for (prop in searchedFromFb) {
-            console.log(searchedFromFb[prop].searched)
             const searchedItems = document.createElement('li')
             searchedItems.appendChild(document.createTextNode(searchedFromFb[prop].searched))
 
             arrayOfSearched.push(searchedItems.outerHTML)
-            //movieApp.placeHolder.innerHTML = arrayOfSearched.join('')
 
 
-            movieApp.iconElementTwo = document.querySelector('.fa-bars')
+            movieApp.iconElementTwo = document.querySelector('.fa-film')
             movieApp.burgerMenu = document.querySelector('.burgerMenu')
+
+            let clickCounter = 0
             movieApp.iconElementTwo.addEventListener('click', function () {
-                movieApp.burgerMenu.innerHTML = `<h3>Search History</h3>`
+                clickCounter = clickCounter + 1;
+                if(clickCounter%2==0){
+                    movieApp.burgerMenu.style.display = 'none'
+                    movieApp.placeHolder.style.display = 'none'
+                }else{
+                    movieApp.burgerMenu.innerHTML = `<h3>Search History</h3>`
+                    movieApp.burgerMenu.style.display = 'block'
+                    movieApp.placeHolder.style.display = 'block'
+                }
             })
+
             movieApp.burgerMenu.addEventListener('click', function () {
-                console.log('hello')
                 movieApp.placeHolder.innerHTML = arrayOfSearched.join('')
             })
 
@@ -190,7 +197,7 @@ movieApp.init = () => {
     movieApp.expandingBar()
     movieApp.setUpEventListner()
     movieApp.backButton()
-    //movieApp.firebaseConnector()
+    movieApp.firebaseConnector()
 }
 
 movieApp.init();

@@ -251,7 +251,7 @@ html {
 }
 
 header {
-  background-color: #2C2C2C;
+  background-color: #1F201F;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -305,22 +305,40 @@ header h1 {
   -ms-flex-item-align: center;
       align-self: center;
   color: white;
-  font-size: 6.7rem;
-  margin-top: 40px;
+  font-size: 8.7rem;
+  margin-top: 30px;
   font-family: "Mr Dafoe", cursive;
 }
-header h3 {
+header .topMenu {
+  background-color: #B79748;
+  z-index: 10;
+}
+header .topMenu h3 {
   color: white;
   font-size: 2.9rem;
   position: absolute;
   left: 100px;
   top: 10px;
-  background-color: black;
+  padding: 10px;
+}
+header .topMenu .searchedItems {
+  position: absolute;
+  left: 400px;
+  top: 20px;
+  color: black;
+}
+header .topMenu .searchedItems ol {
+  list-style: none;
+  padding-left: 0;
+}
+header .topMenu .searchedItems li {
+  font-size: 20px;
+  color: white;
   padding: 10px;
 }
 
 .searchContainer {
-  background-color: black;
+  background-color: #1F201F;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -335,7 +353,7 @@ header h3 {
   -ms-flex-item-align: center;
       align-self: center;
   position: absolute;
-  background-color: #2C2C2C;
+  background-color: #1F201F;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -349,17 +367,12 @@ header h3 {
   margin: 20px;
 }
 .searchContainer .popUpError button:hover, .searchContainer .popUpError button:focus {
-  color: #a08044;
+  color: #B79748;
 }
 .searchContainer .popUpError p {
   margin: 20px;
 }
 .searchContainer input {
-  background: #137191;
-  width: 20px;
-  height: 20px;
-  padding: 20px;
-  border-radius: 30px;
   -ms-flex-item-align: center;
       align-self: center;
   border: none;
@@ -367,21 +380,23 @@ header h3 {
   cursor: pointer;
   -webkit-transition: width 1s ease;
   transition: width 1s ease;
+  background: #4868B7;
+  width: 20px;
+  height: 20px;
+  padding: 20px;
+  border-radius: 30px;
   font-size: 1.6em;
 }
-.searchContainer select[name=language],
-.searchContainer select[name=year] {
+.searchContainer select[name=language] {
   border: none;
-  font-family: "Lato", sans-serif;
+  cursor: pointer;
   border-radius: 10px;
   font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   line-height: 32px;
   letter-spacing: 1px;
-  cursor: pointer;
   padding: 5px;
-}
-.searchContainer select[name=year] {
-  margin-left: 10px;
 }
 .searchContainer .searchBtn {
   width: 22px;
@@ -400,9 +415,6 @@ header h3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 .searchContainer .search i {
   font-size: 50px;
@@ -427,7 +439,7 @@ header h3 {
   cursor: pointer;
 }
 .searchContainer .submit:hover, .searchContainer .submit:focus {
-  color: #a08044;
+  color: #B79748;
 }
 .searchContainer .positioning {
   position: relative;
@@ -439,10 +451,10 @@ header h3 {
           justify-content: center;
 }
 
-ul {
-  background-color: #2C2C2C;
+.posterPlaceholder ul {
+  background-color: #1F201F;
 }
-ul li {
+.posterPlaceholder ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -453,58 +465,50 @@ ul li {
   padding-top: 40px;
   margin-left: 40px;
 }
-ul p {
-  font-family: "Lato", sans-serif;
+.posterPlaceholder ul p {
   font-size: 1.8rem;
   -ms-flex-item-align: center;
       align-self: center;
   line-height: 1.3;
   width: 70%;
 }
-ul img {
+.posterPlaceholder ul img {
   border-radius: 30px;
   height: 400px;
   width: 300px;
 }
-ul h2 {
+.posterPlaceholder ul h2 {
   padding-bottom: 20px;
 }
-ul div {
-  color: #a08044;
+.posterPlaceholder ul div {
+  color: #B79748;
 }
 
 footer {
-  height: 10vh;
-  background-color: #a08044;
+  background-color: #B79748;
   height: 5vh;
-}
-footer p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  text-align: center;
+}
+footer p {
+  -ms-flex-item-align: center;
+      align-self: center;
   font-size: 2rem;
-  padding-top: 5px;
-  font-family: "Lato", sans-serif;
-}
-
-.searchedItems {
-  position: absolute;
-  left: 400px;
-  top: 20px;
-}
-.searchedItems ol {
-  list-style-position: inside;
-  background-color: whitesmoke;
-}
-.searchedItems li {
-  font-size: 20px;
 }
 
 @media (max-width: 480px) {
+  header h1 {
+    -ms-flex-item-align: center;
+        align-self: center;
+    color: white;
+    font-size: 4.35rem;
+    font-family: "Mr Dafoe", cursive;
+  }
+
   .imageOne,
 .imageThree {
     display: none;
